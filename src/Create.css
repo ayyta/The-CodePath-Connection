@@ -1,0 +1,57 @@
+.create-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.create-title {
+  font-size: 2vw;
+  margin: 1rem 1rem;
+}
+
+.post-title-input {
+  width: 15vw;
+  height: 5vh;
+  font-size: 1.2vw;
+  margin: 1rem 1rem;
+  border-radius: .5vw;
+}
+
+.post-caption-input {
+  width: 30vw;
+  height: 10vh;
+  font-size: 1.2vw;
+  margin: 1rem 1rem;
+  font-family: Arial;
+  border-radius: .5vw;
+
+}
+
+.post-image-input {
+  width: 30vw;
+  height: 6vh;
+  font-size: 1.2vw;
+  margin: 1rem 1rem;
+  border-radius: .5vw;
+}
+
+.post-button {
+  width: 8vw;
+  height: 5vh;
+  border: none;
+  background-color: white;
+  color: black;
+  border-radius: 2vw;
+
+}
+
+.post-button:hover {
+  background-color: rgb(65, 63, 63);
+  color: white;
+  cursor: pointer;
+}
+
+.post-button:active {
+  background-color: black;
+}
+
