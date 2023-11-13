@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 const timeFrom = (created_at) => {
   const pastDate = new Date(created_at);
@@ -29,7 +29,8 @@ const SinglePost = (props) => {
   const { created_at, description, key, photos, title, upvotes, comments } = props.data
 
   const [upvotesUS, setUpvotesUS] = useState(upvotes)
-
+  const [comment, setComment] = useState(comments)
+  const [commentInput, setCommentInput] = useState('')
   const handleUpvote = () => {
 
     async function IncUpvote () {
@@ -41,6 +42,7 @@ const SinglePost = (props) => {
     }
     IncUpvote()
     setUpvotesUS(upvotesUS+1)
+    render(0)
   }
   const handleRedirect = () => {
     window.location.href = (`http://localhost:5173/edit/${key}`)
@@ -58,6 +60,34 @@ const SinglePost = (props) => {
     window.location.href = (`http://localhost:5173/`)
     render(0)
   }
+
+  const handleKeyPress = (e) => {
+
+    if (e.key !== 'Enter') {
+      return
+    }
+
+    const newComments = [...comment, e.target.value]
+    async function addComment () { 
+      const { data, error } = await client
+      .from('posts')
+      .update({ comments: newComments })
+      .eq('key', key)
+      .select()
+      
+    }
+    addComment()
+    setComment(newComments)
+    setCommentInput('')
+    render(0)
+  }
+
+  const handleInputChange = (e) => {
+    const { value } = e.target
+    setCommentInput(value)
+
+  }
+
   return (
     <>
     <div className="single-post-container">
@@ -66,6 +96,12 @@ const SinglePost = (props) => {
       <p className="post-description">{description}</p>
       <img src={photos}></img>
 
+      <div>
+        {comment.slice().reverse().map((c) => (
+          <p>{c}</p>
+        ))}
+        <input value={commentInput} onChange={handleInputChange} onKeyDown={handleKeyPress} placeholder='Comment...'></input>
+      </div>
       <div>
         <img src="https://icons8.com/icon/24816/facebook-like" 
         className="post-upvotes-icon" onClick={handleUpvote}></img>
@@ -85,5 +121,6 @@ const SinglePost = (props) => {
     </>
   )
 }
+
 
 export default SinglePost
