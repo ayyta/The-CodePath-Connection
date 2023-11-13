@@ -10,7 +10,6 @@ main {
   height: 10vh;
   display: flex;
   align-items: center;
-  padding: 0vh 2vw;
 }
 
 .post-container {
@@ -25,12 +24,13 @@ main {
   border-radius: 2vh;
   margin-left: 1vw;
 
-  font-size: 1.1  vw;
+  font-size: 1.1vw;
   padding-left: 2.6vw;
 
 }
 .nav-title {
   font-size: 2vw;
+  padding: 0vh 2vw;
 }
 .input-container {
   position: relative;

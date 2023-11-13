@@ -1,7 +1,10 @@
 import { useState, useEffect} from 'react'
 
+import Post from './Post'
+
 const Home = (props) => {
-  const [posts, setPosts] = useState([])
+  const { showPopUp } = props
+  const [posts, setPosts] = useState(null)
   const supabase = props.client
 
   useEffect(() => {
@@ -11,15 +14,24 @@ const Home = (props) => {
         console.warn(error)
       } else {
         console.log(data)
+        setPosts(data)
       }
     }
     getPosts()
-  }, [])
-
+  }, [showPopUp])
 
   return (
     <>
     <p>home page</p>
+    <div>
+      {posts ? posts.map((postData) => <Post data={postData} />) : null}
+
+    </div>
+    <div>
+      <p>title</p>
+      <p>image</p>
+
+    </div>
     </>
   )
 }

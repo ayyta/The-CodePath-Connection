@@ -14,25 +14,28 @@ import Home from './routes/Home'
 import Create from './routes/Create'
 
 
-
 function App() {
-
+  const [showCreatePopUp, setShowCreatePopUp] = useState(false)
   return (
     <>
     <BrowserRouter>
       <main>
         <div className="nav-container">
-          {<NavBar/>}
+          {<NavBar showPopUp={setShowCreatePopUp}/>}
         </div>
 
         <div className="post-container">
           <Routes>
-            <Route path='/' element={<Home client={supabase}/>}/>
-            <Route path='/create' element={<Create/>}/>
-
+            <Route path='/' element={<Home client={supabase} showPopUp={showCreatePopUp}/>}/>
           </Routes>
         </div>
 
+        { showCreatePopUp && (
+          <div className='create-pop-up'>
+            <button className='create-pop-up-button' onClick={() => setShowCreatePopUp(false)}>Close</button>
+            <Create client={supabase} showPopUp={setShowCreatePopUp}/>
+          </div>
+        )}
       </main>
     </BrowserRouter>
     </>
