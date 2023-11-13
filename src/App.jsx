@@ -14,8 +14,30 @@ import Home from './routes/Home'
 import Create from './routes/Create'
 
 
+
+
 function App() {
   const [showCreatePopUp, setShowCreatePopUp] = useState(false)
+
+
+  const createPost = (client, postInputs) => {
+    async function createNewPost () {
+      const { inputTitle, inputDescription, inputImage } = postInputs
+      const { data, error } = await client
+      .from('posts')
+      .insert([{ title: inputTitle, description: inputDescription, photos: inputImage }])
+      .select()
+  
+      if (error) {
+        console.warn(error)
+      } else {
+        alert('Successfully Created New Post')
+        setShowCreatePopUp(false)
+      }
+    }
+    createNewPost();
+  }
+
   return (
     <>
     <BrowserRouter>
@@ -32,7 +54,7 @@ function App() {
         { showCreatePopUp && (
           <div className='create-pop-up'>
             <button className='create-pop-up-button' onClick={() => setShowCreatePopUp(false)}>Close</button>
-            <Create client={supabase} showPopUp={setShowCreatePopUp}/>
+            <Create client={supabase} showPopUp={setShowCreatePopUp} exec={createPost} title='Create a New Post'/>
           </div>
         )}
       </main>

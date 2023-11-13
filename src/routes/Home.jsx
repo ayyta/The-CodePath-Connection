@@ -3,10 +3,13 @@ import { Route, Routes } from "react-router-dom";
 
 import Post from './Post'
 import SinglePost from './SinglePost'
+import Edit from './Edit'
 
 const Home = (props) => {
   const { showPopUp } = props
   const [posts, setPosts] = useState(null)
+  const [render, setRender] = useState(0)
+
   const supabase = props.client
 
   useEffect(() => {
@@ -21,7 +24,7 @@ const Home = (props) => {
       }
     }
     getPosts()
-  }, [showPopUp])
+  }, [showPopUp, render])
 
   return (
     <>
@@ -32,7 +35,10 @@ const Home = (props) => {
         <Route path='/' element={posts ? posts.map((postData) => <Post data={postData} />) : null}/>
 
         {posts && posts.map( (postData) => (
-          <Route path={`/${postData.key}`} element={<SinglePost client={supabase} data={postData}/>}></Route>
+          <>
+          <Route path={`/${postData.key}`} element={<SinglePost client={supabase} data={postData} render={setRender}/>}></Route>
+          <Route path={`/edit/${postData.key}`} element={<Edit client={supabase} data={postData} render={setRender}/>}></Route>
+          </>
         ))}
       </Routes>
       

@@ -1,4 +1,5 @@
-import { useState, useEffect } from 'react'
+import React from 'react';
+import { useState } from 'react'
 
 const timeFrom = (created_at) => {
   const pastDate = new Date(created_at);
@@ -24,7 +25,7 @@ const timeFrom = (created_at) => {
 }
 
 const SinglePost = (props) => {
-  const { client } = props
+  const { client, render } = props
   const { created_at, description, key, photos, title, upvotes, comments } = props.data
 
   const [upvotesUS, setUpvotesUS] = useState(upvotes)
@@ -41,9 +42,22 @@ const SinglePost = (props) => {
     IncUpvote()
     setUpvotesUS(upvotesUS+1)
   }
+  const handleRedirect = () => {
+    window.location.href = (`http://localhost:5173/edit/${key}`)
+  }
 
-
-
+  const handleDelete = () => {
+    async function deletePost () { 
+      const { data, error } = await client
+      .from('posts')
+      .delete()
+      .eq('key', key)
+    }
+    deletePost()
+    alert('Deleted Post, click to redirect...')
+    window.location.href = (`http://localhost:5173/`)
+    render(0)
+  }
   return (
     <>
     <div className="single-post-container">
@@ -57,8 +71,8 @@ const SinglePost = (props) => {
         className="post-upvotes-icon" onClick={handleUpvote}></img>
         <p>{upvotesUS}</p>
         <div>
-          <button>edit</button>
-          <button>trash</button>
+          <button onClick={handleRedirect}>edit</button>
+          <button onClick={handleDelete}>trash</button>
         </div>
 
       </div>
