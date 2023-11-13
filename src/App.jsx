@@ -25,9 +25,8 @@ function App() {
         </div>
 
         <div className="post-container">
-          <Routes>
-            <Route path='/' element={<Home client={supabase} showPopUp={showCreatePopUp}/>}/>
-          </Routes>
+          {<Home client={supabase} showPopUp={showCreatePopUp}/>}
+
         </div>
 
         { showCreatePopUp && (

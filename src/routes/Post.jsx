@@ -1,11 +1,11 @@
-
+import { Link } from 'react-router-dom'
 const Post = (props) => {
   const {created_at, description, key, photos, title, upvotes } = props.data
   
   console.log('here is the data', created_at, description, key, photos, title, upvotes)
 
 
-  const pastDate = new Date('2023-11-12T21:50:19.860866+00:00');
+  const pastDate = new Date(created_at);
   const currentDate = new Date();
 
   const differenceInMilliseconds = currentDate - pastDate;
@@ -27,10 +27,13 @@ const Post = (props) => {
 
   return (
     <>
-    <div>
-      <p>Posted {postedAt} ago</p>
-      <p>{title}</p>
-    </div>
+    <Link to={`/${key}`} style={{ textDecoration: 'none', color: 'inherit' }}>
+      <div className="single-post-container">
+        <p className="post-time">Posted {postedAt} ago</p>
+        <p className="post-title">{title}</p>
+        <p className="post-upvotes">{upvotes} upvotes</p>
+      </div>
+    </Link>
     </>
   )
 }

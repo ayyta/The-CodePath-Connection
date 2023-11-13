@@ -30,7 +30,6 @@ const Create = (props) => {
       if (error) {
         console.warn(error)
       } else {
-        //console.log(data)
         alert('Successfully Created New Post')
         showPopUp(false)
       }

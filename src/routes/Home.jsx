@@ -1,6 +1,8 @@
 import { useState, useEffect} from 'react'
+import { Route, Routes } from "react-router-dom";
 
 import Post from './Post'
+import SinglePost from './SinglePost'
 
 const Home = (props) => {
   const { showPopUp } = props
@@ -14,6 +16,7 @@ const Home = (props) => {
         console.warn(error)
       } else {
         console.log(data)
+
         setPosts(data)
       }
     }
@@ -22,15 +25,17 @@ const Home = (props) => {
 
   return (
     <>
-    <p>home page</p>
-    <div>
-      {posts ? posts.map((postData) => <Post data={postData} />) : null}
+    <p>Sort By</p>
+    
+    <div className="all-post-container">
+      <Routes>
+        <Route path='/' element={posts ? posts.map((postData) => <Post data={postData} />) : null}/>
 
-    </div>
-    <div>
-      <p>title</p>
-      <p>image</p>
-
+        {posts && posts.map( (postData) => (
+          <Route path={`/${postData.key}`} element={<SinglePost client={supabase} data={postData}/>}></Route>
+        ))}
+      </Routes>
+      
     </div>
     </>
   )
