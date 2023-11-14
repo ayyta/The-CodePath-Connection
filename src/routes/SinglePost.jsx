@@ -1,6 +1,6 @@
 import React from 'react';
-import { useState, useEffect } from 'react'
-
+import { useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 const timeFrom = (created_at) => {
   const pastDate = new Date(created_at);
   const currentDate = new Date();
@@ -31,6 +31,9 @@ const SinglePost = (props) => {
   const [upvotesUS, setUpvotesUS] = useState(upvotes)
   const [comment, setComment] = useState(comments)
   const [commentInput, setCommentInput] = useState('')
+
+  const navigate = useNavigate();
+  
   const handleUpvote = () => {
 
     async function IncUpvote () {
@@ -45,7 +48,7 @@ const SinglePost = (props) => {
     render(0)
   }
   const handleRedirect = () => {
-    window.location.href = (`http://localhost:5173/edit/${key}`)
+    navigate(`/edit/${key}`);
   }
 
   const handleDelete = () => {
@@ -57,7 +60,7 @@ const SinglePost = (props) => {
     }
     deletePost()
     alert('Deleted Post, click to redirect...')
-    window.location.href = (`http://localhost:5173/`)
+    navigate(`/`);
     render(0)
   }
 

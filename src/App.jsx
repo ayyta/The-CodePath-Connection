@@ -18,7 +18,7 @@ import Create from './routes/Create'
 
 function App() {
   const [showCreatePopUp, setShowCreatePopUp] = useState(false)
-
+  const [searchTerm, setSearchTerm] = useState('')
 
   const createPost = (client, postInputs) => {
     async function createNewPost () {
@@ -43,11 +43,11 @@ function App() {
     <BrowserRouter>
       <main>
         <div className="nav-container">
-          {<NavBar showPopUp={setShowCreatePopUp}/>}
+          {<NavBar showPopUp={setShowCreatePopUp} setSearchTerm={setSearchTerm}/>}
         </div>
 
         <div className="post-container">
-          {<Home client={supabase} showPopUp={showCreatePopUp}/>}
+          {<Home client={supabase} showPopUp={showCreatePopUp} searchTerm={searchTerm}/>}
 
         </div>
 
