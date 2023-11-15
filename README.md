@@ -36,15 +36,17 @@ The following **optional** features are implemented:
 The following **additional** features are implemented:
 
 * [ ] List anything else that you added to improve the site's functionality!
+* [X] Created a popup for creating new post
+* [X] Users apply newest and upvotes while searching for post
 
 ## Video Walkthrough
 
 Here's a walkthrough of implemented user stories:
 
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExcWl1cXp2Y2lvMGZ3ZTdkM2d2YmtzaHowOXF4NDUzMGFwbTIzY2d2YSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/PDyYa8EjRwQTpju5Ip/giphy.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 <!-- Replace this with whatever GIF tool you used! -->
-GIF created with ...  
+GIF created with LiceCAP 
 <!-- Recommended tools:
 [Kap](https://getkap.co/) for macOS
 [ScreenToGif](https://www.screentogif.com/) for Windows
@@ -53,7 +55,7 @@ GIF created with ...
 ## Notes
 
 Describe any challenges encountered while building the app.
-
+Rerending after updating was a struggle but I figured it out/
 ## License
 
     Copyright [yyyy] [name of copyright owner]
