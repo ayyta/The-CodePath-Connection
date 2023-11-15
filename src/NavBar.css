@@ -6,11 +6,14 @@
   align-items: center;
   color: white;
   font-weight: bold
+  
 }
 
 .nav-title {
+  text-decoration: none;
   font-size: 2vw;
-  padding: 0vh 1vw;
+  padding: 1.5vh 1vw;
+  color: white;
 }
 
 

@@ -25,6 +25,7 @@ const Post = (props) => {
 
   return (
     <>
+    
     <Link to={`/${key}`} style={{ textDecoration: 'none', color: 'inherit' }}>
       <div className="single-post-container">
         <p className="post-time">Posted {postedAt} ago</p>

@@ -100,6 +100,7 @@ const SinglePost = (props) => {
       <img src={photos}></img>
 
       <div>
+        <p className='comment-title'>Comments</p>
         {comment.slice().reverse().map((c) => (
           <p>{c}</p>
         ))}
@@ -113,16 +114,12 @@ const SinglePost = (props) => {
 
         </div>
         <div>
-          <button onClick={handleRedirect}>edit</button>
-          <button onClick={handleDelete}>trash</button>
+          <button className="single-post-button" onClick={handleRedirect}>edit</button>
+          <button className="single-post-button" onClick={handleDelete}>trash</button>
         </div>
 
       </div>
-      <div className="comment-container">
-        {comments.map((comment) => {
-          <p>{comment}</p>
-        })}
-      </div>
+
     </div>
     </>
   )

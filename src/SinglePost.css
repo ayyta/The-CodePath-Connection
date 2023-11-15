@@ -31,3 +31,25 @@
 .post-upvotes-icon:hover {
   background-image: url('https://cdn-icons-png.flaticon.com/512/739/739231.png');
 }
+
+.comment-title {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.single-post-button {
+  border: 1px solid black;
+  background-color: rgb(106, 106, 204);
+  color: white;
+  width: 3vw;
+  height: 4vh;
+  border-radius: .5vw;
+
+  margin-right: .5vw;
+  cursor: pointer;
+  transition: all .3s ease;
+}
+
+.single-post-button:hover {
+  background-color: grey;
+}

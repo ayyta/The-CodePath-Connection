@@ -1,9 +1,9 @@
 import { useState, useEffect} from 'react'
 import { Route, Routes } from "react-router-dom";
 
-import Post from './Post'
 import SinglePost from './SinglePost'
 import Edit from './Edit'
+import AllPost from './AllPost'
 
 const Home = (props) => {
   const { showPopUp, searchTerm, setSearchTerm } = props
@@ -96,16 +96,14 @@ const Home = (props) => {
     )
   }
 
+
   return (
     <>
-    <div className="sort-by-container">
-      <p className="sort-by-title">Sort By</p>
-      <button className="sort-by-filter-button" style={currentNewestStyle} onClick={handleFilterByNewest}>Newest</button>
-      <button className="sort-by-filter-button" style={currentUpvoteStyle} onClick={handleFilterByUpvotes}>Upvotes</button>
-    </div>
     <div className="all-post-container">
       <Routes>
-        <Route path='/' element={posts ? posts.map((postData) => <Post data={postData} />) : null}/>
+        <Route path='/' element={posts ? <AllPost posts={posts} currentNewestStyle={currentNewestStyle}
+          handleFilterByNewest={handleFilterByNewest} currentUpvoteStyle={currentUpvoteStyle} 
+          handleFilterByUpvotes={handleFilterByUpvotes}/> : null}/>
 
         {posts && posts.map( (postData) => (
           <>
