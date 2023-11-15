@@ -2,8 +2,6 @@ import { Link } from 'react-router-dom'
 const Post = (props) => {
   const {created_at, description, key, photos, title, upvotes } = props.data
   
-  console.log('here is the data', created_at, description, key, photos, title, upvotes)
-
 
   const pastDate = new Date(created_at);
   const currentDate = new Date();

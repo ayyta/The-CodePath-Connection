@@ -4,42 +4,49 @@ import { Route, Routes } from "react-router-dom";
 import Post from './Post'
 import SinglePost from './SinglePost'
 import Edit from './Edit'
-import NavBar from '../components/NavBar'
 
 const Home = (props) => {
-  const { showPopUp, searchTerm } = props
+  const { showPopUp, searchTerm, setSearchTerm } = props
   const [posts, setPosts] = useState(null)
+  const [searchPost, setSearchPost] = useState(posts)
   const [render, setRender] = useState(0)
 
   const supabase = props.client
 
-  useEffect(() => {
-    async function getPosts () {
-      const { data, error } = await supabase.from('posts').select();
-      if (error) {
-        console.warn(error)
-      } else {
-        setPosts(data)
-      }
+  async function getPosts () {
+    const { data, error } = await supabase.from('posts').select();
+    if (error) {
+      console.warn(error)
+    } else {
+      setPosts(data)
     }
+  }
+
+  useEffect(() => {
     getPosts()
   }, [showPopUp, render])
 
-
   useEffect(() => {
     // This useEffect will run after the component re-renders
+    if (searchTerm.length === 0) {
+      return
+    }
+    // setsearch term to something
     if (posts) {
-      // Reset posts to the original data before filtering
       setPosts(posts);
+      setSearchTerm(searchTerm)
+
     }
 
-    // Run setRender first
-    setRender((prevRender) => prevRender + 1);
+
   }, [posts]);
 
   useEffect(() => {
-    // This useEffect will run after the component re-renders
-    // Filter posts only when the initial data is available
+    if (searchTerm.length === 0) {
+      getPosts()
+      return
+    }
+    
     if (posts && searchTerm) {
       setPosts((prevPosts) =>
         prevPosts.filter((post) =>
@@ -47,7 +54,7 @@ const Home = (props) => {
         )
       );
     }
-  }, [searchTerm, posts]);
+  }, [searchTerm]);
 
   const handleFilterByUpvotes = () => {
     setPosts(

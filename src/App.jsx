@@ -47,7 +47,7 @@ function App() {
         </div>
 
         <div className="post-container">
-          {<Home client={supabase} showPopUp={showCreatePopUp} searchTerm={searchTerm}/>}
+          {<Home client={supabase} showPopUp={showCreatePopUp} searchTerm={searchTerm} setSearchTerm={setSearchTerm}/>}
 
         </div>
 
