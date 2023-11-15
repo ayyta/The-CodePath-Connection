@@ -45,7 +45,7 @@ const SinglePost = (props) => {
     }
     IncUpvote()
     setUpvotesUS(upvotesUS+1)
-    render(0)
+    render()
   }
   const handleRedirect = () => {
     navigate(`/edit/${key}`);
@@ -61,7 +61,7 @@ const SinglePost = (props) => {
     deletePost()
     alert('Deleted Post, click to redirect...')
     navigate(`/`);
-    render(0)
+    render()
   }
 
   const handleKeyPress = (e) => {
@@ -82,7 +82,7 @@ const SinglePost = (props) => {
     addComment()
     setComment(newComments)
     setCommentInput('')
-    render(0)
+    render()
   }
 
   const handleInputChange = (e) => {
@@ -103,12 +103,15 @@ const SinglePost = (props) => {
         {comment.slice().reverse().map((c) => (
           <p>{c}</p>
         ))}
-        <input value={commentInput} onChange={handleInputChange} onKeyDown={handleKeyPress} placeholder='Comment...'></input>
+        <input className="comment-input" value={commentInput} onChange={handleInputChange} onKeyDown={handleKeyPress} placeholder='Comment...'></input>
       </div>
       <div>
-        <img src="https://icons8.com/icon/24816/facebook-like" 
-        className="post-upvotes-icon" onClick={handleUpvote}></img>
-        <p>{upvotesUS}</p>
+        <p className='post-upvotes-title'>{upvotesUS} upvotes</p>
+        <div className="post-upvotes">
+          <p>Upvote</p>
+          <div className="post-upvotes-icon" onClick={handleUpvote}></div>
+
+        </div>
         <div>
           <button onClick={handleRedirect}>edit</button>
           <button onClick={handleDelete}>trash</button>

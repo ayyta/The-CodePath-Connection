@@ -37,7 +37,7 @@ const Edit = (props) => {
       }
     }
     editNewPost();
-    render(1)
+    render()
   }
 
   return (

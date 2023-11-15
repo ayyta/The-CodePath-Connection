@@ -1,0 +1,60 @@
+.nav-container {
+  background-color: rgb(69, 69, 156);
+  width: 100%;
+  height: 10vh;
+  display: flex;
+  align-items: center;
+  color: white;
+  font-weight: bold
+}
+
+.nav-title {
+  font-size: 2vw;
+  padding: 0vh 1vw;
+}
+
+
+.nav-options {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-left: 25vw;
+}
+
+
+.nav-home {
+  padding: 0vh 2vw;
+  text-decoration: none;
+  color: white;
+}
+
+.nav-home:hover {
+  color: rgb(146, 146, 150);
+}
+
+.nav-create:hover {
+  color: rgb(146, 146, 150);
+  cursor: pointer;
+}
+.input-container {
+  position: relative;
+}
+
+.input-icon {
+  left: 1.8vw;
+  width: 1.5vw;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.search-bar {
+  height: 4vh;
+  width: 30vw;
+  border-radius: 2vh;
+  margin-left: 1vw;
+
+  font-size: 1.1vw;
+  padding-left: 2.6vw;
+
+}

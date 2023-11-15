@@ -30,6 +30,7 @@ const Create = (props) => {
 
   return (
     <>
+
     <div className="create-container">
       <p className="create-title">{props.title}</p>
       <input className="post-title-input" name="inputTitle" value={postInputs.inputTitle} onChange={handleInputChange} placeholder="Title"></input>

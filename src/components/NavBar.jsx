@@ -12,8 +12,10 @@ const NavBar = (props) => {
         <input className="search-bar" id="search-input" placeholder="Search Posts" onChange={(e) => setSearchTerm(e.target.value)}></input>
       </div>
 
-      <Link to='/' className="nav-home">Home</Link>
-      <p onClick={ ()=> showPopUp(true) }>Create a New Post</p>
+      <div className="nav-options">
+        <Link to='/' className="nav-home">Home</Link>
+        <p className="nav-create" onClick={ ()=> showPopUp(true) }>Create a New Post</p>
+      </div>
     </>
   )
 }

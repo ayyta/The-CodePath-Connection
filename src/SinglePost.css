@@ -1,0 +1,33 @@
+.comment-input {
+  width: 15vw;
+  height: 3vh;
+}
+.post-upvotes-icon {
+  width: 1.5vw;
+  height: 3vh;
+  background-image: url("https://cdn-icons-png.flaticon.com/512/126/126473.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  position: relative;
+  left: .5vw;
+  top: .3vh;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.post-upvotes {
+  display: flex;
+  flex-direction: row;
+}
+
+.post-upvotes-title {
+  font-size: 14px;
+  margin: 10px 0px;
+  font-weight: bold;
+}
+
+.post-upvotes-icon:hover {
+  background-image: url('https://cdn-icons-png.flaticon.com/512/739/739231.png');
+}

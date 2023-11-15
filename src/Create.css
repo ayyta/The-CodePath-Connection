@@ -3,10 +3,12 @@
   align-items: center;
   flex-direction: column;
 
-  background-color: rgb(51, 51, 51);
+  background-color: rgb(66, 68, 168);
   width: 35vw;
   height: 70vh;
-  border-radius: 2vw;
+  border-radius: 1vw;
+  color: white;
+
 }
 
 .create-title {
@@ -72,4 +74,6 @@
 .create-pop-up-button {
   position: absolute;
   right: 0%;
+
+  
 }

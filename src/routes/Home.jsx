@@ -8,12 +8,24 @@ import Edit from './Edit'
 const Home = (props) => {
   const { showPopUp, searchTerm, setSearchTerm } = props
   const [posts, setPosts] = useState(null)
-  const [searchPost, setSearchPost] = useState(posts)
   const [render, setRender] = useState(0)
+
+  const [upvoteIsActive, setUpvoteIsActive] = useState(false);
+  const [newestIsActive, setNewestIsActive] = useState(false);
 
   const supabase = props.client
 
+  const activeStyle = {
+    color: 'white',
+    backgroundColor: 'grey'
+  }
+  const currentUpvoteStyle = upvoteIsActive ? activeStyle : {};
+  const currentNewestStyle = newestIsActive ? activeStyle : {};
+
+
   async function getPosts () {
+    setUpvoteIsActive(false)
+    setNewestIsActive(false)
     const { data, error } = await supabase.from('posts').select();
     if (error) {
       console.warn(error)
@@ -37,16 +49,15 @@ const Home = (props) => {
       setSearchTerm(searchTerm)
 
     }
-
-
   }, [posts]);
 
   useEffect(() => {
     if (searchTerm.length === 0) {
+      setUpvoteIsActive(false)
+      setNewestIsActive(false)
       getPosts()
       return
     }
-    
     if (posts && searchTerm) {
       setPosts((prevPosts) =>
         prevPosts.filter((post) =>
@@ -55,8 +66,10 @@ const Home = (props) => {
       );
     }
   }, [searchTerm]);
-
+  
   const handleFilterByUpvotes = () => {
+    setUpvoteIsActive(true)
+    setNewestIsActive(false)
     setPosts(
       Object.entries(posts)
       .map(([key, value]) => ({ 
@@ -71,22 +84,25 @@ const Home = (props) => {
       const currentDate = new Date();
       return currentDate - pastDate;
     }
+    setNewestIsActive(true)
+    setUpvoteIsActive(false)
 
     setPosts(
       Object.entries(posts)
       .map(([key, value]) => ({
         key, ...value}))
-      .sort((a,b) => returnDifferenceInMilli(b.created_at) - returnDifferenceInMilli(a.created_at))
+      .sort((b,a) => returnDifferenceInMilli(b.created_at) - returnDifferenceInMilli(a.created_at))
 
     )
-
   }
 
   return (
     <>
-    <p>Sort By</p>
-    <button onClick={handleFilterByNewest}>newest</button>
-    <button onClick={handleFilterByUpvotes}>upvotes</button>
+    <div className="sort-by-container">
+      <p className="sort-by-title">Sort By</p>
+      <button className="sort-by-filter-button" style={currentNewestStyle} onClick={handleFilterByNewest}>Newest</button>
+      <button className="sort-by-filter-button" style={currentUpvoteStyle} onClick={handleFilterByUpvotes}>Upvotes</button>
+    </div>
     <div className="all-post-container">
       <Routes>
         <Route path='/' element={posts ? posts.map((postData) => <Post data={postData} />) : null}/>

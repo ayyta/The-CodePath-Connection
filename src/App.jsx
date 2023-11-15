@@ -3,6 +3,9 @@ import { Link, BrowserRouter, Route, Routes } from "react-router-dom";
 import { createClient } from '@supabase/supabase-js'
 import './App.css'
 import './Create.css'
+import './NavBar.css'
+import './Post.css'
+import './SinglePost.css'
 
 const supabaseURL = "https://ieqsymoycrshpinlvric.supabase.co"
 const supabaseAPIKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImllcXN5bW95Y3JzaHBpbmx2cmljIiwicm9sZSI6ImFub24iLCJpYXQiOjE2OTk3ODE3ODQsImV4cCI6MjAxNTM1Nzc4NH0.vC--K-ctEydWuP4ZSZBghMpG9eJac1se6tXGC1sjBXM"
