@@ -58,3 +58,17 @@
   transition: all 0.3s ease;
 
 }
+
+@media (max-width: 768px) {
+  .sort-by-container {
+    right: 16vw;
+  }
+  .sort-by-filter-button {
+    width: 18vw
+  }
+
+  .sort-by-title {
+    margin-right: 2vw;
+  
+  }
+}

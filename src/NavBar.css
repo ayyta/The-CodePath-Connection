@@ -11,8 +11,8 @@
 
 .nav-title {
   text-decoration: none;
-  font-size: 2vw;
-  padding: 1.5vh 1vw;
+  font-size: 35px;
+  padding: 2vh 1vw;
   color: white;
 }
 
@@ -21,7 +21,9 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  padding-left: 25vw;
+  padding-left: 0; /* Adjust this value as needed */
+  margin-right: 1vw; /* Add margin to separate from the right edge */
+  margin-left: auto; /* Pushes nav-options to the right */
 }
 
 
@@ -61,3 +63,40 @@
   padding-left: 2.6vw;
 
 }
+
+
+@media (max-width: 768px) {
+  .nav-title {
+    font-size: 15px;
+    padding: 2vh 3vw;
+  }
+
+  .nav-container {
+    width: 100vw
+  }
+
+  .input-icon {
+    left: 2.5vw;
+    width: 15px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+
+  .search-bar {
+    height: 4vh;
+    width: 40vw;
+    border-radius: 2vh;
+    margin-left: 1vw;
+  
+    font-size: 12px;
+    padding-left: 5vw;
+  
+  }
+
+  .nav-home, .nav-create {
+    font-size: 12px;
+  }
+}
+

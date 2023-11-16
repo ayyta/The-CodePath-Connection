@@ -74,6 +74,48 @@
 .create-pop-up-button {
   position: absolute;
   right: 0%;
+}
 
+.edit-container {
+  margin-top: 2%;
+}
+@media (max-width: 768px) {
+
+  .create-container {
+    width: 90vw;
+    height: 60vh;
+  }
+  .create-title {
+    font-size: 20px;
+  }
+
+  .post-title-input {
+    width: 50vw;
+    height: 5vh;
+    font-size: 4vw;
+    border-radius: 2vw;
+  }
+
+  .post-caption-input {
+    width: 50vw;
+    height: 10vh;
+    font-size: 3vw;
+    border-radius: 2vw;
+  }
   
+  .post-image-input {
+    width: 50vw;
+    height: 4vh;
+    font-size: 3vw;
+    border-radius: 2vw;
+  }
+  
+  .post-button {
+    width: 12vw;
+    height: 4vh;
+  }
+
+  .edit-container {
+    margin-top: 10%;
+  }
 }

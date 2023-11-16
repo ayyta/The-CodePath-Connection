@@ -42,7 +42,7 @@ const Edit = (props) => {
 
   return (
     <>
-    <div className="create-container">
+    <div className="create-container edit-container">
       <p className="create-title">Edit Post</p>
       <input className="post-title-input" name="inputTitle" value={postInputs.inputTitle} onChange={handleInputChange} placeholder="Title"></input>
       <textarea rows="4" cols="50" className="post-caption-input" name="inputDescription" value={postInputs.inputDescription} onChange={handleInputChange} placeholder="Write a caption..."></textarea>

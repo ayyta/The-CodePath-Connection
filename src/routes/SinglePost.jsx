@@ -97,8 +97,9 @@ const SinglePost = (props) => {
       <p className="post-time">{`${timeFrom(created_at)} ago`}</p>
       <p className="post-title">{title}</p>
       <p className="post-description">{description}</p>
-      <img src={photos}></img>
 
+      <div className={photos ? "post-image": ''} style={{backgroundImage: `url(${photos})`}}></div>
+    
       <div>
         <p className='comment-title'>Comments</p>
         {comment.slice().reverse().map((c) => (

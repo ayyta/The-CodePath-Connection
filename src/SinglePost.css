@@ -53,3 +53,47 @@
 .single-post-button:hover {
   background-color: grey;
 }
+
+.post-image {
+  width: 20vw;
+  height: 0;
+  padding-top: 15%; /* Adjust this value to achieve the desired aspect ratio */
+
+
+  background-size: contain;
+  background-position: left center;
+  background-repeat: no-repeat;
+}
+
+
+@media (max-width: 768px) {
+  .single-post-button {
+    width: 12vw;
+  }
+
+  .comment-input {
+    width: 58vw;
+  }
+
+  .post-upvotes-icon {
+    width: 5vw;
+    height: 5vh;
+    background-image: url("https://cdn-icons-png.flaticon.com/512/126/126473.png");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+  
+    position: relative;
+    left: 1.5vw;
+    top: -.2vh;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .post-image {
+    width: 60vw;
+    height: 0;
+    padding-top: 70%; /* Adjust this value to achieve the desired aspect ratio */
+    background-position: left center;
+  }
+}
